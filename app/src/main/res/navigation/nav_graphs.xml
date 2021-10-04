@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.mungeun.gymforyou.HomeFragment"
+        android:name="com.mungeun.gymforyou.views.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/chattingFragment"
-        android:name="com.mungeun.gymforyou.ChattingFragment"
+        android:name="com.mungeun.gymforyou.views.ChattingFragment"
         android:label="ChattingFragment" />
     <fragment
         android:id="@+id/seeMoreFragment"
-        android:name="com.mungeun.gymforyou.SeeMoreFragment"
+        android:name="com.mungeun.gymforyou.views.SeeMoreFragment"
         android:label="SeeMoreFragment" />
 </navigation>
