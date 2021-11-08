@@ -7,14 +7,48 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.mungeun.gymforyou.views.HomeFragment"
-        android:label="HomeFragment" />
+        android:name="com.mungeun.gymforyou.views.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gymDetailFragment"
+            app:destination="@id/gymDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chattingFragment"
-        android:name="com.mungeun.gymforyou.views.ChattingFragment"
-        android:label="ChattingFragment" />
+        android:name="com.mungeun.gymforyou.views.chatting.ChattingFragment"
+        android:label="ChattingFragment" >
+        <action
+            android:id="@+id/action_chattingFragment_to_newChattingFragment"
+            app:destination="@id/newChattingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/seeMoreFragment"
-        android:name="com.mungeun.gymforyou.views.SeeMoreFragment"
+        android:name="com.mungeun.gymforyou.views.see_more.SeeMoreFragment"
         android:label="SeeMoreFragment" />
+    <fragment
+        android:id="@+id/newChattingFragment"
+        android:name="com.mungeun.gymforyou.views.chatting.newchatting.NewChattingFragment"
+        android:label="NewChattingFragment" >ㅣ
+
+    </fragment>
+    <fragment
+        android:id="@+id/alarmFragment"
+        android:name="com.mungeun.gymforyou.views.alarm.AlarmFragment"
+        android:label="AlarmFragment" />
+    <fragment
+        android:id="@+id/gymDetailFragment"
+        android:name="com.mungeun.gymforyou.views.gym_detail.GymDetailFragment"
+        android:label="GymDetailFragment" >
+
+
+        <argument
+            android:name="gymData"
+            app:argType="com.mungeun.gymforyou.domain.model.gym.Gym" />
+        <action
+            android:id="@+id/action_gymDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

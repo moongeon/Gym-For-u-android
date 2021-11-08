@@ -1,15 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.HomeFragment">
 
-    <RelativeLayout
-        android:id="@+id/map_view"
+    <data>
+
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.home.HomeViewModel" />
+
+        <variable
+            name="hasCardView"
+            type="boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:context=".views.home.HomeFragment">
 
-</RelativeLayout >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/radius_normal"
+                android:onClick="@{() -> vm.goAlarm()}"
+                android:src="@drawable/ic_alarm_off"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.05" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="544dp"
+                android:background="@drawable/bg_btn_normal_orange_radius_8dp"
+                android:text="목록보기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--            <com.skydoves.elasticviews.ElasticImageView-->
+            <!--                android:id="@+id/gym_list"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="15dp"-->
+            <!--                app:imageView_duration="300"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/cardView_gym_detail"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.495"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:srcCompat="@drawable/ic_list" />-->
+
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/cardView_gym_detail"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="200dp"-->
+            <!--                android:layout_margin="20dp"-->
+            <!--                app:isGone="@{hasCardView}"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent">-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:onClick="@{() -> vm.goGymDetail()}"-->
+            <!--                    android:orientation="vertical">-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="@{vm.cardView}"></TextView>-->
+            <!--                </LinearLayout>-->
+
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_bottm_sheet_radius_16dp"
+                android:backgroundTint="?attr/colorSurface"
+                android:elevation="16dp"
+                app:behavior_hideable="true"
+                app:behavior_peekHeight="0dp"
+                app:layout_behavior="com.mungeun.gymforyou.widget.BottomSheetBehavior">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginEnd="150dp"
+                    android:background="@drawable/bg_btn_solid_light_gray_ebebeb_radius_8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/guide_peek_height"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_peek_height"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="48dp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_gym"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guide_peek_height"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/list_item_home" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

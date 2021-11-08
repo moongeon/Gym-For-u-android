@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.see_more.SeeMoreViewModel" />
+    </data>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -11,13 +18,272 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/settings_headLine_alarm"
+                style="@style/TextAppearance.GymForYou.OverLine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="테마설정"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:text="설정"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/settings_choose_vibration"
+                app:layout_constraintStart_toEndOf="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+            <Switch
+                android:id="@+id/settings_choose_vibration"
+                style="@style/Widget.GymForYou.Settings.Switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:background="@color/white_FFFFFF"
+                android:text="알림설정"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/iv_back" />
+
+            <View
+                android:id="@+id/view_below_alarm"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="?android:dividerHorizontal"
+                app:layout_constraintEnd_toEndOf="@id/settings_choose_vibration"
+                app:layout_constraintStart_toStartOf="@+id/settings_choose_vibration"
+                app:layout_constraintTop_toBottomOf="@id/settings_choose_vibration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="앱 정보"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/margin_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_alarm" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_info"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_info"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_info" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_rule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="이용약관"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/txt_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_app_info" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_rule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_rule"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_rule"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_rule"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_rule" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_personal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="개인정보 처리방침"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/txt_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_app_rule" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_personal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_personal_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_personal_info"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_personal_info"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_personal_info" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_location_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="위치정보 이용약관"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/txt_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_app_personal_info" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_location_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_location_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_location_info"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_location_info"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_location_info" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="로그아웃"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/txt_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_app_location_info" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_logout"
+                android:onClick="@{() -> vm.onClickLogout()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_logout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_logout"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_logout"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_logout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_delete_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="회원탈퇴"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="@dimen/txt_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_below_app_logout" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_app_delete_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_app_delete_auth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_app_delete_auth"
+                app:srcCompat="@drawable/ic_next" />
+
+            <View
+                android:id="@+id/view_below_app_delete_auth"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintEnd_toEndOf="@id/iv_app_info"
+                app:layout_constraintStart_toStartOf="@id/tv_app_info"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_delete_auth" />
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/settings_choose_theme"-->
+            <!--                style="@style/Widget.GymForYou.Settings"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="테마설정"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/settings_choose_language" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/settings_version"-->
+            <!--                style="@style/Widget.GymForYou.Settings"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="버전"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/settings_choose_theme"/>-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/settings_logout"-->
+            <!--                style="@style/Widget.GymForYou.Settings"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="버전"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/settings_version"/>-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

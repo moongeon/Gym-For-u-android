@@ -6,10 +6,64 @@
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/fragment_chatting.xml" value="0.2046875" />
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/fragment_home.xml" value="0.17603850050658562" />
-        <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/fragment_see_more.xml" value="0.2046875" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/fragment_see_more.xml" value="0.1" />
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/layout/list_item_chatting.xml" value="0.22" />
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
         <entry key="..\:/Users/pyh92/Downloads/GymForYou/app/src/main/res/xml/network_security_config.xml" value="0.18009118541033434" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-hdpi/bg_btn_solid_light_gray_ebebeb_radius_8dp.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-hdpi/ic_check_circle.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-hdpi/selector_agreement.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-mdpi/bg_btn_normal_orange_radius_8dp.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-nodpi/bg_solid_grayf4f4_radius_8dp.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v21/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_btn_solid_dark_gray_333333_radius_8dp.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_btn_solid_light_gray_ebebeb_radius_8dp.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_btn_solid_light_gray_fbfafa_radius_4dp.xml" value="0.1234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_btn_stroke_dark_gray_333333_radius_8dp.xml" value="0.1234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_cv_stroke_gray_999999_mission.xml" value="0.1234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_et_stroke_gray_999999_radius_4dp.xml" value="0.1234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_solid_gray_fbfafa_radius_8dp.xml" value="0.1234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/bg_white_top_radius_16dp.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/filters_sheet_header_shadow.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-v24/ic_login_logo.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable-xhdpi/bg_white_top_radius_16dp.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/bg_bottm_sheet_radius_16dp.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/bg_btn_solid_dark_gray_333333_radius_8dp.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/bg_btn_solid_orange_radius_8dp.xml" value="0.14947916666666666" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/bg_rect_black_radius_4dp.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/bg_stroke_gray_c8c8c8_radius_8dp.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/ic_bottom_nav_chat.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/ic_bottom_nav_home.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/ic_check_circle.xml" value="0.1037037037037037" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/drawable/selector_agreement.xml" value="0.1037037037037037" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/activity_email_signup.xml" value="0.25" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/activity_intro.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/activity_main.xml" value="0.10739614994934144" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/activity_sign_up.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/alarm_fragment.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fading_snackbar_layout.xml" value="0.10739614994934144" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_alarm.xml" value="0.25" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_chatting.xml" value="0.1286231884057971" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_gym_detail.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_home.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_schedule_filter.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/fragment_see_more.xml" value="0.22" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/item_alarm.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/list_item_alarm.xml" value="0.234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/list_item_chatting.xml" value="0.1" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/list_item_home.xml" value="0.234375" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/list_item_newchatting.xml" value="0.1286231884057971" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/new_chatting_fragment.xml" value="0.1286231884057971" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/layout/widget_fading_snackbar.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/menu/bottom_nav.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/pyh92/Downloads/GymForYou1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.11302083333333333" />
       </map>
     </option>
   </component>
@@ -18,5 +72,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>

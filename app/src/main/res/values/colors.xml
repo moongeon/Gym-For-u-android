@@ -6,5 +6,26 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white_FFFFFF">#FFFFFFFF</color>
+    <color name="white_FDFDFD">#FDFDFD</color>
+    <color name="white_gray_F4F4F4">#F4F4F4</color>
+    <color name="black_2D2D2D">#2D2D2D</color>
+    <color name="orange_F79256">#F79256</color>
+    <color name="black_323232">#FF323232</color>
+    <color name="black_701616">#70161616</color>
+    <color name="gray_999999">#FF999999</color>
+    <color name="gray_FBFAFA">#FFFBFAFA</color>
+    <color name="gray_858585">#FF858585</color>
+    <color name="gray_BCBCBC">#FFBCBCBC</color>
+    <color name="dark_gray_333333">#FF333333</color>
+    <color name="dark_gray_5C5C5C">#FF5C5C5C</color>
+    <color name="dark_gray_8C8C8C">#8C8C8C</color>
+    <color name="dark_gray_242424">#FF242424</color>
+    <color name="light_gray_F5F5F5">#FFF5F5F5</color>
+    <color name="light_gray_EBEBEB">#FFEBEBEB</color>
+    <color name="red_FF5050">#FFFF5050</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>

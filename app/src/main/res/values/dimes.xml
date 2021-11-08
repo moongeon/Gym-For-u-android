@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_micro">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_extra_large">64dp</dimen>
+
+    <dimen name="txt_micro">4dp</dimen>
+    <dimen name="txt_small">8dp</dimen>
+    <dimen name="txt_normal">16dp</dimen>
+    <dimen name="txt_large">32dp</dimen>
+
+    <dimen name="radius_micro">4dp</dimen>
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_normal">16dp</dimen>
+    <dimen name="radius_large">32dp</dimen>
+
+    <dimen name="elevation_micro">4dp</dimen>
+    <dimen name="elevation_margin_small">8dp</dimen>
+    <dimen name="elevation_margin_normal">16dp</dimen>
+    <dimen name="elevation_margin_large">32dp</dimen>
+    <dimen name="elevation_margin_extra_large">64dp</dimen>
+
+    <dimen name="padding_micro">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+
+
+</resources>

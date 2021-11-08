@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.chatting.ChattingViewModel" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"
+            />
+        <variable
+            name="gym"
+            type="com.mungeun.gymforyou.domain.model.gym.Gym" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{clickListener}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_stroke_gray_c8c8c8_radius_8dp"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_small"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_photo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/radius_small"
+            android:src="@drawable/ic_alarm_pic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"        />
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{gym.name}"
+            android:layout_marginStart="@dimen/radius_small"
+            app:layout_constraintBottom_toTopOf="@+id/sub_title"
+            app:layout_constraintStart_toEndOf="@+id/img_photo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{gym.address.main}"
+            android:layout_marginStart="@dimen/radius_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_photo"
+            app:layout_constraintTop_toBottomOf="@+id/main_title" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

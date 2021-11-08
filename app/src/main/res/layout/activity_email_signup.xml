@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.email_signup.EmailSignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        tools:context=".views.email_signup.EmailSignUpActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="이메일로 회원가입"
+            android:textColor="@color/black_2D2D2D"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="이메일 주소 입력"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:text="@={vm.email}"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toTopOf="@+id/et_pw"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_text" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="비밀번호 입력"
+            android:singleLine="true"
+            android:text="@={vm.pw}"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toTopOf="@+id/et_pw_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_pw_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="비밀번호 확인"
+            android:singleLine="true"
+            android:text="@={vm.pwConfirm}"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toTopOf="@+id/tv_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="이름"
+            android:inputType="text"
+            android:singleLine="true"
+            android:text="@={vm.name}"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toTopOf="@+id/tv_phone_nm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_pw_confirm" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tv_phone_nm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="핸드폰번호"
+            android:inputType="number"
+            android:singleLine="true"
+            android:text="@={vm.phoneNm}"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toTopOf="@+id/iv_signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/iv_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:background="@drawable/bg_btn_normal_orange_radius_8dp"
+            android:gravity="center"
+            android:onClick="@{()->vm.onSignUpClick()}"
+            android:text="회원가입하고 시작"
+            android:textColor="@color/white_FDFDFD"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phone_nm" />
+
+
+        <com.mungeun.gymforyou.widget.FadingSnackbar
+            android:id="@+id/snackbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:isGone="@{vm.isLoading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

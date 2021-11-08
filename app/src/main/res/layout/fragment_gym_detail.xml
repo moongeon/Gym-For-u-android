@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.gym_detail.GymDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/sv_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:onClick="@{() -> vm.onClickBack()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back_title" />
+
+            <View
+                android:id="@+id/view_top"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_lodgment_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="62dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{vm.gymName}"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_top"
+                tools:text="상품 이름" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rb_rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/orange_F79256"
+                android:progressTint="@color/orange_F79256"
+                app:layout_constraintStart_toStartOf="@id/tv_lodgment_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_lodgment_name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="28dp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toBottomOf="@id/rb_rating"
+                tools:src="@drawable/img_product" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_map"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_image"
+                app:srcCompat="@drawable/ic_good_off_detail" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_share"
+                app:layout_constraintStart_toEndOf="@+id/iv_favorite"
+                app:layout_constraintTop_toBottomOf="@+id/iv_image"
+                app:srcCompat="@drawable/ic_map_detail" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_map"
+                app:layout_constraintTop_toBottomOf="@+id/iv_image"
+                app:srcCompat="@drawable/ic_share_detail" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="28dp"
+                android:background="@color/white_gray_F4F4F4"
+                app:layout_constraintTop_toBottomOf="@id/iv_share" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_explanation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black_2D2D2D"
+                app:layout_constraintEnd_toEndOf="@id/iv_image"
+                app:layout_constraintStart_toStartOf="@id/iv_image"
+                app:layout_constraintTop_toBottomOf="@id/view"
+                tools:text="@{vm.gymDescription}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_tour_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="정보"
+                android:textColor="@color/black_2D2D2D"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/iv_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_explanation" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/bg_solid_grayf4f4_radius_8dp"
+                android:paddingBottom="17dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_explanation">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="adress"
+                    android:textColor="@color/black_2D2D2D"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/cl_info"
+                    app:layout_constraintTop_toTopOf="@id/cl_info" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="36dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/black_2D2D2D"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/cl_info"
+                    app:layout_constraintStart_toEndOf="@id/text_address"
+                    app:layout_constraintTop_toTopOf="@id/cl_info"
+                    tools:text="@{vm.gymAdress}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_homepage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="homepage"
+                    android:textColor="@color/black_2D2D2D"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/cl_info"
+                    app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_homepage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="19dp"
+                    android:autoLink="web"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:textColor="@color/black_2D2D2D"
+                    app:layout_constraintEnd_toEndOf="@id/cl_info"
+                    app:layout_constraintStart_toEndOf="@id/text_homepage"
+                    app:layout_constraintTop_toTopOf="@id/text_homepage"
+                    tools:text="@{vm.gymHomepage}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

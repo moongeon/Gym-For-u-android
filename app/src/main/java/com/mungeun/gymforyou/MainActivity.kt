@@ -1,15 +1,14 @@
 package com.mungeun.gymforyou
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mungeun.gymforyou.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -27,8 +26,14 @@ class MainActivity : AppCompatActivity() {
 
         //Setup bottom navigation
         NavigationUI.setupWithNavController(mBinding.bottomNav, navController)
-        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        //bottomNavigationView.setupWithNavController(navController)
+        // 홈, 채팅, 더보기 일때만 바텀네비게이션 표시
+        navController.addOnDestinationChangedListener{ _, destination, _ ->
+            if (destination.id == R.id.homeFragment || destination.id == R.id.chattingFragment || destination.id == R.id.seeMoreFragment) {
+                mBinding.bottomNav.visibility = View.VISIBLE
+            } else {
+                mBinding.bottomNav.visibility = View.GONE
+            }
+        }
 
 
 
