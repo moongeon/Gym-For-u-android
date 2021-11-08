@@ -54,7 +54,6 @@ class HomeViewModel @Inject constructor(
 
     }
 
-
     fun updateCardView(p1: MapPOIItem?) {
         if (p1 != null) {
             cardView.postValue(p1.itemName)

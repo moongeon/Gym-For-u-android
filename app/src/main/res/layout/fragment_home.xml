@@ -12,6 +12,11 @@
         <variable
             name="hasCardView"
             type="boolean" />
+
+        <variable
+            name="gym"
+            type="com.mungeun.gymforyou.domain.model.gym.Gym" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +52,7 @@
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="544dp"
+                android:layout_marginTop="450dp"
                 android:background="@drawable/bg_btn_normal_orange_radius_8dp"
                 android:text="목록보기"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,29 +71,88 @@
             <!--                app:layout_constraintStart_toStartOf="parent"-->
             <!--                app:srcCompat="@drawable/ic_list" />-->
 
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:id="@+id/cardView_gym_detail"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="200dp"-->
-            <!--                android:layout_margin="20dp"-->
-            <!--                app:isGone="@{hasCardView}"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent">-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_gym_detail"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                app:isGone="@{hasCardView}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button">
 
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:onClick="@{() -> vm.goGymDetail()}"-->
-            <!--                    android:orientation="vertical">-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> vm.goGymDetail()}"
+                    android:orientation="vertical">
 
-            <!--                    <TextView-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:text="@{vm.cardView}"></TextView>-->
-            <!--                </LinearLayout>-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/ic_alarm_pic"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
 
-            <!--            </androidx.cardview.widget.CardView>-->
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="46dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="@{gym.name}"
+                        android:textColor="@color/black_2D2D2D"
+                        android:textSize="@dimen/txt_normal"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tv_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/civ_image"
+                        app:layout_constraintTop_toTopOf="@id/civ_image"
+                        tools:text="제목" />
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="46dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="@{gym.thumbnail}"
+                        android:textColor="@color/black_2D2D2D"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/tv_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/civ_image"
+                        app:layout_constraintTop_toBottomOf="@id/tv_name"
+                        tools:text="알림 메시지입니다." />
+
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/dark_gray_8C8C8C"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@id/civ_image"
+                        app:layout_constraintStart_toStartOf="@id/tv_content"
+                        app:layout_constraintTop_toBottomOf="@id/tv_content"
+                        tools:text="3시간 전" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
