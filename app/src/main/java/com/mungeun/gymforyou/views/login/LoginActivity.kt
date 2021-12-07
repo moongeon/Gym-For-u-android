@@ -30,29 +30,30 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         // viewmodel dataBinding 설정
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+
         mBinding.vm = viewModel
         mBinding.lifecycleOwner = this
         // snackbar 설정
         snackbar = mBinding.snackbar
 
 
-        viewModel.successLogin.observe(this, {
-            //Snackbar.make(mBinding.snackbar, "테스트", 300).show()
-            //snackbar.show("테스트","테스트",)
-            startActivity(Intent(this, MainActivity::class.java))
-        })
-
-        viewModel.goSignUp.observe(this,EventObserver{
-            startActivity(Intent(this,SignUpActivity::class.java))
-        })
-
-        viewModel.snackBarMessage.observe(this, EventObserver{
-            Snackbar.make(mBinding.snackbar, it.messageId.toString(), 600).show()
-        })
-
-//            mBinding.vm.successLogin.observe(viewLifecycleOwner,EventObserver{
-//
-//            })
+        with(viewModel) {
+            successLogin.observe(this@LoginActivity, {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            })
+            goSignUp.observe(this@LoginActivity, EventObserver {
+                startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
+            })
+            viewModel.snackBarMessage.observe(this@LoginActivity, EventObserver {
+                Snackbar.make(mBinding.snackbar, it.messageId.toString(), 600).show()
+            })
+            fetchState.observe(this@LoginActivity,{
+                showToast(it.toString())
+                viewModel.isLoading.value = false
+            })
+        }
 
 
     }

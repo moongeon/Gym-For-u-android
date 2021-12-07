@@ -1,6 +1,6 @@
 package com.mungeun.gymforyou.domain.repository
 
-import com.mungeun.gymforyou.domain.model.SignUpt
+import com.mungeun.gymforyou.domain.model.User
 
 interface SignUpRepository {
     suspend fun postSignUpInfo(
@@ -9,6 +9,6 @@ interface SignUpRepository {
         name : String,
         phoneNumber : String,
         picto : String
-    ): SignUpt
+    ): User
 
 }

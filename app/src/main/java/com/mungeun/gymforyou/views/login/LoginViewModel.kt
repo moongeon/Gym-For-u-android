@@ -2,16 +2,15 @@ package com.mungeun.gymforyou.views.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mungeun.domain.usecase.LoginUseCase
 import com.mungeun.gymforyou.R
+import com.mungeun.gymforyou.base.BaseViewModel
 import com.mungeun.gymforyou.utilities.Event
 import com.mungeun.gymforyou.utilities.message.SnackbarMessage
 import com.mungeun.gymforyou.utilities.preference.PreferenceManger
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 import java.util.*
 import javax.inject.Inject
 
@@ -19,10 +18,10 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val preferenceManger: PreferenceManger,
-) : ViewModel() {
+) : BaseViewModel() {
     val id: MutableLiveData<String> = MutableLiveData("")
     val pw: MutableLiveData<String> = MutableLiveData("")
-
+    val gif = "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif"
     var isLoading = MutableLiveData<Boolean>(false)
 
 
@@ -57,6 +56,7 @@ class LoginViewModel @Inject constructor(
     fun onLoginClick() {
         val id = id.value.toString().trim()
         val pw = pw.value.toString().trim()
+        _successLogin.postValue(Event(true))
         if (id.isEmpty()) {
             _snackbarMessage.postValue(Event(SnackbarMessage(
                 messageId = "아이디를 입력해주세요.",
@@ -70,26 +70,16 @@ class LoginViewModel @Inject constructor(
                 requestChangeId = UUID.randomUUID().toString()
             )))
         } else {
-            viewModelScope.launch {
-                try {
+            viewModelScope.launch(exceptionHandler) {
                     isLoading.value = true
                     val response = loginUseCase.invoke(id, pw)
                     with(preferenceManger) {
                         accessToken = response.accessToken
                         refreshToken = response.refreshToken
+                        userName = id
                     }
                     isLoading.value = false
                     _successLogin.postValue(Event(true))
-
-                } catch (ex: HttpException) {
-                    isLoading.value = false
-                    _snackbarMessage.postValue(Event(SnackbarMessage(
-                        messageId = "로그인이 실패하였습니다.",
-                        actionId = R.string.ok,
-                        requestChangeId = UUID.randomUUID().toString()
-                    )))
-
-                }
             }
 
         }

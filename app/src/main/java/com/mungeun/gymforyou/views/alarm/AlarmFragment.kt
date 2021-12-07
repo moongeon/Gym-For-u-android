@@ -24,7 +24,8 @@ class AlarmFragment : Fragment() {
         var adapter = AlarmAdapter()
         mBinding.rvAlarms.adapter = adapter
         var test = arrayListOf<Alarm>()
-        test.add(Alarm("asas","","",0,false,"asasasasas",1000,""))
+        test.add(Alarm("asas","","",0,false,"알림 메시지입니다. 알림 메시지 입니다.\n" +
+                "알림 메시지 입니다. 알림 메시지..",1000,""))
         adapter.submitList(test)
 
 

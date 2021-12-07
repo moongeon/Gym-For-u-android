@@ -6,21 +6,32 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.mungeun.gymforyou.R
 
-@BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(view: ImageView, imageUrl: String) {
+@BindingAdapter("imageCircleFromUrl")
+fun bindImageCircleFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
+            .apply(RequestOptions.circleCropTransform())
             .into(view)
-    } else {
-        Glide.with(view.context)
-            .load("https://grepp-cloudfront.s3.ap-northeast-2.amazonaws.com/programmers_imgs/competition-imgs/2020-Flo-challenge/FLO_Splash-Img3x(1242x2688).png")
-            .circleCrop()
-            .into(view)
+
     }
 }
+
+@BindingAdapter("imageFromUrl")
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+    if (!imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .apply(RequestOptions.fitCenterTransform())
+            .into(view)
+
+    }
+}
+
+
 
 
 @BindingAdapter("isGone")

@@ -3,9 +3,9 @@ package com.mungeun.gymforyou.views.email_signup
 import android.os.SystemClock
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mungeun.domain.usecase.SignUpUseCase
+import com.mungeun.gymforyou.base.BaseViewModel
 import com.mungeun.gymforyou.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EmailSignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCase) :
-    ViewModel() {
+    BaseViewModel() {
     val email: MutableLiveData<String> = MutableLiveData("")
     val pw: MutableLiveData<String> = MutableLiveData("")
     val pwConfirm: MutableLiveData<String> = MutableLiveData("")
@@ -44,52 +44,54 @@ class EmailSignUpViewModel @Inject constructor(private val signUpUseCase: SignUp
     val signUpSuccess: LiveData<Event<Boolean>> get() = _signUpSuccess
 
     fun onSignUpClick() {
-        val currentClickTime = SystemClock.uptimeMillis()
-        val elapsedTime: Long = SystemClock.uptimeMillis() - mLastClickTime
-        mLastClickTime = currentClickTime
-        if (elapsedTime <= MIN_CLICK_INTERVAL)
-            return
-        val email: String = email.value.toString().trim()
-        val pw: String = pw.value.toString().trim()
-        val pwConfirm: String = pwConfirm.value.toString().trim()
-        val name: String = name.value.toString().trim()
-        val phoneNm: String = phoneNm.value.toString().trim()
-        when {
-            email.isBlank() -> {
-                _isEmailEmpty.value = Event(true)
-            }
-            pw.isBlank() -> {
-                _isPwEmpty.value = Event(true)
-            }
-            pwConfirm.isBlank() -> {
-                _isPwConfirmEmpty.value = Event(true)
-            }
-            pw != pwConfirm -> {
-                _pwNotMatch.value = Event(true)
-            }
-            name.isBlank() -> {
-                _pwNotMatch.value = Event(true)
-            }
-            phoneNm.isBlank() -> {
-                _pwNotMatch.value = Event(true)
-            }
-            else -> {
-                viewModelScope.launch {
-                    isLoading.value = true
-                    val response = signUpUseCase.invoke(email,
-                        pw,
-                        name,
-                        phoneNm,
-                        ""
-                    )
-                    isLoading.value = false
-                    if (response.isSuccess == "true") {
-                        _signUpSuccess.value = Event(true)
-                    } else print("회원가입실패")
+        try {
+            val currentClickTime = SystemClock.uptimeMillis()
+            val elapsedTime: Long = SystemClock.uptimeMillis() - mLastClickTime
+            mLastClickTime = currentClickTime
+            if (elapsedTime <= MIN_CLICK_INTERVAL)
+                return
+            val email: String = email.value.toString().trim()
+            val pw: String = pw.value.toString().trim()
+            val pwConfirm: String = pwConfirm.value.toString().trim()
+            val name: String = name.value.toString().trim()
+            val phoneNm: String = phoneNm.value.toString().trim()
+            when {
+                email.isBlank() -> {
+                    _isEmailEmpty.value = Event(true)
                 }
+                pw.isBlank() -> {
+                    _isPwEmpty.value = Event(true)
+                }
+                pwConfirm.isBlank() -> {
+                    _isPwConfirmEmpty.value = Event(true)
+                }
+                pw != pwConfirm -> {
+                    _pwNotMatch.value = Event(true)
+                }
+                name.isBlank() -> {
+                    _pwNotMatch.value = Event(true)
+                }
+                phoneNm.isBlank() -> {
+                    _pwNotMatch.value = Event(true)
+                }
+                else -> {
+                    viewModelScope.launch(exceptionHandler) {
+                            isLoading.value = true
+                            val response = signUpUseCase.invoke(
+                                email,
+                                pw,
+                                name,
+                                phoneNm,
+                                ""
+                            )
+                            isLoading.value = false
+                        }
+                    }
 
-
+                }
             }
+         catch (e: Exception) {
+
         }
     }
 

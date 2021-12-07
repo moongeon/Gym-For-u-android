@@ -99,6 +99,13 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //elastic view
     implementation "com.github.skydoves:elasticviews:2.0.9"
+    // Socket I.O
+    implementation('io.socket:socket.io-client:2.0.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+    // Fragment에서 ViewBinding 시 메모리 누수 해제 도와주는 라이브러리
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.2'
+
     // SafeArg
    //implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
 //    implementation 'com.jakewharton:butterknife:10.0.0'

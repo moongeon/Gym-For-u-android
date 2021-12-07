@@ -3,40 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.mungeun.gymforyou.views.chatting.chat_detail.ChatDetailViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_FBFAFA"
-        >
+        android:background="@color/gray_FBFAFA">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_receiver"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout_send"
-            app:layout_constraintEnd_toStartOf="@+id/recyclerView_sender"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:reverseLayout="true"
-            tools:listitem="@layout/list_item_receiver_message"
-            />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_sender"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout_send"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/recyclerView_receiver"
-            app:layout_constraintTop_toTopOf="parent"
-            app:reverseLayout="true"
-            tools:listitem="@layout/list_item_sender_message"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"             />
+
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/recyclerView_sender"-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_marginBottom="50dp"-->
+        <!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/constraintLayout_send"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/recyclerView_receiver"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:reverseLayout="true"-->
+        <!--            tools:listitem="@layout/list_item_sender_message"-->
+        <!--            />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_send"
@@ -47,9 +51,11 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
+                android:id="@+id/editText_send"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_solid_white_ffff_radius_8dp"
+                android:text="@={vm.editTextSend}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +66,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="20dp"
+                android:onClick="@{() -> vm.sendMessage()}"
                 android:src="@drawable/ic_baseline_play_arrow_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

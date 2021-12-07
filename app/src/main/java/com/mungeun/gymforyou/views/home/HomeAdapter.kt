@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mungeun.gymforyou.databinding.ListItemHomeBinding
 import com.mungeun.gymforyou.domain.model.gym.Gym
 
 
 class HomeAdapter :
-    androidx.recyclerview.widget.ListAdapter<Gym, RecyclerView.ViewHolder>(ChattingDiffCallback()) {
+    ListAdapter<Gym, RecyclerView.ViewHolder>(ChattingDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ChattingViewHolder(
             ListItemHomeBinding.inflate(LayoutInflater.from(parent.context),

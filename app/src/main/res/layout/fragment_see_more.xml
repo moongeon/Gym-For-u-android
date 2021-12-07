@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.mungeun.gymforyou.views.see_more.SeeMoreViewModel" />
@@ -18,40 +19,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_normal"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/email_signup_app_bar_height"
+                android:animateLayoutChanges="true"
+                android:background="?attr/colorSurface"
+                android:fitsSystemWindows="true"
+                android:stateListAnimator="@animator/show_toolbar"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_back_title" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/settings_headLine_alarm"
-                style="@style/TextAppearance.GymForYou.OverLine"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:text="설정"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/settings_choose_vibration"
-                app:layout_constraintStart_toEndOf="@+id/iv_back"
-                app:layout_constraintTop_toTopOf="@+id/iv_back" />
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:title="설정"
+                    app:titleTextColor="@color/black" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
 
             <Switch
                 android:id="@+id/settings_choose_vibration"
                 style="@style/Widget.GymForYou.Settings.Switch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginEnd="@dimen/margin_normal"
                 android:background="@color/white_FFFFFF"
                 android:text="알림설정"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_back" />
+                app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
             <View
                 android:id="@+id/view_below_alarm"
@@ -205,10 +208,10 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_app_logout"
-                android:onClick="@{() -> vm.onClickLogout()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_normal"
+                android:onClick="@{() -> vm.onClickLogout()}"
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_logout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_logout"

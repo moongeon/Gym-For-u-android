@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.mungeun.gymforyou.databinding.FragmentSeeMoreBinding
+import com.mungeun.gymforyou.views.dialog.YesNoDialogFragment
+import com.mungeun.gymforyou.views.dialog.onClickYesNo
 import com.mungeun.gymforyou.views.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,17 +25,34 @@ class SeeMoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentSeeMoreBinding.inflate(inflater,container,false)
-
-        with(mBinding){
+        mBinding = FragmentSeeMoreBinding.inflate(inflater,container,false).apply {
             vm = viewModel
             lifecycleOwner = this@SeeMoreFragment
         }
 
+        with(mBinding){
+            toolbar.setNavigationOnClickListener {
+                it.findNavController().navigateUp()
+            }
+        }
+
+
         with(viewModel){
             onClickLogout.observe(viewLifecycleOwner,{
-                requireActivity().startActivity(Intent(requireActivity(),LoginActivity::class.java))
-                requireActivity().finish()
+                YesNoDialogFragment.newInstance("로그아웃","로그아웃 하시겠습니까?","실패","성공",
+                object : onClickYesNo{
+                    override fun clickYes() {
+                        requireActivity().startActivity(Intent(requireActivity(), LoginActivity::class.java))
+                        requireActivity().finish()
+                    }
+
+                    override fun clickNo() {
+
+                    }
+
+                }).
+                show(requireActivity().supportFragmentManager,"dialog_schedule_hints")
+//
 
 
             })

@@ -16,14 +16,38 @@
         <variable
             name="gym"
             type="com.mungeun.gymforyou.domain.model.gym.Gym" />
-
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.home.HomeFragment">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/email_signup_app_bar_height"
+            android:background="?attr/colorSurface"
+            android:elevation="8dp"
+            android:fitsSystemWindows="true"
+            android:stateListAnimator="@animator/show_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorSurface"
+                android:elevation="8dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin"
+                app:menu="@menu/map_menu"
+                app:titleTextColor="@color/black" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/map_view"
@@ -35,31 +59,17 @@
             app:layout_constraintTop_toBottomOf="parent">
 
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="@dimen/radius_normal"
-                android:onClick="@{() -> vm.goAlarm()}"
-                android:src="@drawable/ic_alarm_off"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.05" />
-
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="450dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/bg_white_ffff_radius_32dp"
                 android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
                 android:text="목록보기"
-                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <!--            <com.skydoves.elasticviews.ElasticImageView-->
             <!--                android:id="@+id/gym_list"-->
@@ -76,19 +86,18 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_gym_detail"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="120dp"
                 android:layout_margin="20dp"
                 app:isGone="@{hasCardView}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_solid_white_ffff_radius_8dp"
-                    android:onClick="@{() -> vm.goGymDetail()}"
+                    android:onClick="@{() -> vm.goGymDetail(gym)}"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -139,18 +148,17 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_name"
                         tools:text="알림 메시지입니다." />
 
-
                     <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:text="3시간 전"
                         android:textColor="@color/dark_gray_8C8C8C"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@id/civ_image"
                         app:layout_constraintStart_toStartOf="@id/tv_content"
-                        app:layout_constraintTop_toBottomOf="@id/tv_content"
-                        tools:text="3시간 전" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_content" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+<data>
+    <variable
+        name="data"
+        type="com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetail" />
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        android:text="@{data.name}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_32383E"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="14sp"
+        android:lineSpacingExtra="6sp"
+        tools:text="괴짜 브로콜리" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="12dp"
+        android:textSize="12sp"
+        android:text="2일전"
+        android:textColor="@color/gray_72787E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="2일전"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_review"
+        android:layout_width="312dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="22dp"
+        android:scaleType="fitXY"
+        app:imageFromUrl="@{data.img}"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_content"
+        android:text="@{data.content}"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/img_review"
+        tools:text="근처 헬스장 중에서 깨끗하고 친절, 근처 헬스장 중에서 깨끗하고 친절, 근처 헬스장 중에서 깨끗하고 친절, 근처 헬스장 중..."
+        />
+
+    <View
+        android:id="@+id/view_below_review"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/white_gray_F4F4F4"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

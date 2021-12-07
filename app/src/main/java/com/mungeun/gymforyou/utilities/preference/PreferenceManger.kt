@@ -50,6 +50,14 @@ class PreferenceManger@Inject constructor(
             editor?.apply()
         }
 
+    var userName: String
+        get() = instance.value.getString(USER_NAME, "").toString()
+        set(value) {
+            val editor = instance.value.edit()
+            editor?.putString(USER_NAME, value)
+            editor?.apply()
+        }
+
 
 
 
@@ -57,6 +65,7 @@ class PreferenceManger@Inject constructor(
     companion object {
         private const val REFRESH_TOKEN = "refreshToken"
         private const val ACCESS_TOKEN = "accessToken"
+        private const val USER_NAME = "userName"
     }
 
 

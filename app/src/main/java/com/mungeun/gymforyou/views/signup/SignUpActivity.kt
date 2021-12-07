@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.ActivitySignUpBinding
 import com.mungeun.gymforyou.views.email_signup.EmailSignUpActivity
@@ -19,8 +20,14 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // viewmodel dataBinding 설정
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
-        mBinding.vm = viewModel
-        mBinding.lifecycleOwner = this
+        with(mBinding){
+            vm = viewModel
+            lifecycleOwner = this@SignUpActivity
+            toolbar.setNavigationOnClickListener {
+                it.findNavController().navigateUp()
+            }
+        }
+
         // snackbar 설정
         with(viewModel){
             goEmailSignUp.observe(this@SignUpActivity,{

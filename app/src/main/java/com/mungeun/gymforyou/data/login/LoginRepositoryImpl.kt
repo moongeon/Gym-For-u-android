@@ -9,6 +9,6 @@ import javax.inject.Inject
 class LoginRepositoryImpl @Inject constructor(private val api : LoginApiService): LoginRepository {
 
     override suspend fun postLoginInfo(id: String, password: String): LoginResponse {
-        return api.requestLogin(Login(id,password))
-    }
+            return api.requestLogin(Login(id,password))
+}
 }

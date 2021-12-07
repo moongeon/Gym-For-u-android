@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.base.BaseActivity
@@ -22,6 +23,9 @@ class EmailSignUpActivity : BaseActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_email_signup)
         mBinding.vm = viewModel
         mBinding.lifecycleOwner = this
+        mBinding.toolbar.setNavigationOnClickListener {
+          it.findNavController().navigateUp()
+        }
         initViewModelCallback()
 
     }

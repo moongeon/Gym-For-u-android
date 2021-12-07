@@ -7,6 +7,7 @@ import com.mungeun.domain.usecase.LoginUseCase
 import com.mungeun.domain.usecase.SignUpUseCase
 import com.mungeun.gymforyou.data.api.GymApiService
 import com.mungeun.gymforyou.data.api.LoginApiService
+import com.mungeun.gymforyou.data.api.SignupApiService
 import com.mungeun.gymforyou.data.gym.GymRepositoryImpl
 import com.mungeun.gymforyou.domain.repository.GymRepository
 import com.mungeun.gymforyou.domain.repository.LoginRepository
@@ -40,8 +41,8 @@ class ApiModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .client(okHttpClient)
             .baseUrl("http://qazxswedc.iptime.org:3000/")
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -72,17 +73,17 @@ class ApiModule {
     }
 
 
-//    @Provides
-//    @Singleton
-//    fun provideLoginRepository(loginApiService: LoginApiService): LoginRepository {
-//        return LoginRepositoryImpl(loginApiService)
-//    }
-
-
     @Provides
     @Singleton
-    fun provideSignUpRepository(loginApiService: LoginApiService): SignUpRepository {
-        return SignUpRepositoryImpl(loginApiService)
+    fun provideSignUpService(retrofit: Retrofit): SignupApiService {
+        return retrofit.create(SignupApiService::class.java)
+    }
+
+// 회원가입
+    @Provides
+    @Singleton
+    fun provideSignUpRepository(signupApiService: SignupApiService): SignUpRepository {
+        return SignUpRepositoryImpl(signupApiService)
     }
 
     @Provides
@@ -106,6 +107,12 @@ class ApiModule {
         return GymUseCase(gymRepository)
     }
 
+
+
+
+
+
+    // 로그인
     @Provides
     @Singleton
     fun provideLoginRepository(loginApiService: LoginApiService): LoginRepository {
