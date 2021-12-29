@@ -7,7 +7,6 @@ object SignUpMapper {
 
     fun mapperToSignUpMapper(signUpResponse: SignUpResponse): User {
         return User(
-            _id = signUpResponse._id,
             email = signUpResponse.email,
             name = signUpResponse.name,
             phoneNumber = signUpResponse.phoneNumber,

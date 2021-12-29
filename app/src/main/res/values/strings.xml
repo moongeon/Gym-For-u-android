@@ -18,10 +18,13 @@
     <string name="menu_item_share_gym">공유</string>
     <string name="menu_item_alarm">알림</string>
     <string name="home_title">홈</string>
-    <string name="notice_title">소식</string>
+    <string name="chat_title">채팅방</string>
     <string name="review_title">후기</string>
 
 
     <string name="gymdetail_chat_inquiry">채팅문의</string>
+
+    <string name="share_gym_detail" translation_description="공유하기 위한 기본 테스트">
+ Gym For You 앱에서 %s 헬스장을 확인하세요</string>
 
 </resources>

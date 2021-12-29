@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.mungeun.gymforyou.databinding.FragmentSeeMoreBinding
+import com.mungeun.gymforyou.utilities.autoCleared
 import com.mungeun.gymforyou.views.dialog.YesNoDialogFragment
 import com.mungeun.gymforyou.views.dialog.onClickYesNo
 import com.mungeun.gymforyou.views.login.LoginActivity
@@ -17,8 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SeeMoreFragment : Fragment() {
 
-    private lateinit var mBinding : FragmentSeeMoreBinding
-
+    private var mBinding by autoCleared<FragmentSeeMoreBinding>()
     private val viewModel : SeeMoreViewModel by viewModels()
 
     override fun onCreateView(
@@ -39,7 +39,7 @@ class SeeMoreFragment : Fragment() {
 
         with(viewModel){
             onClickLogout.observe(viewLifecycleOwner,{
-                YesNoDialogFragment.newInstance("로그아웃","로그아웃 하시겠습니까?","실패","성공",
+                YesNoDialogFragment.newInstance("로그아웃","로그아웃 하시겠습니까?","아니요","네",
                 object : onClickYesNo{
                     override fun clickYes() {
                         requireActivity().startActivity(Intent(requireActivity(), LoginActivity::class.java))

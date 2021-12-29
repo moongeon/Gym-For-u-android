@@ -21,8 +21,8 @@ class LoginViewModel @Inject constructor(
 ) : BaseViewModel() {
     val id: MutableLiveData<String> = MutableLiveData("")
     val pw: MutableLiveData<String> = MutableLiveData("")
-    val gif = "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif"
-    var isLoading = MutableLiveData<Boolean>(false)
+    val gif =
+        "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif"
 
 
     // 메시지
@@ -56,30 +56,37 @@ class LoginViewModel @Inject constructor(
     fun onLoginClick() {
         val id = id.value.toString().trim()
         val pw = pw.value.toString().trim()
-        _successLogin.postValue(Event(true))
         if (id.isEmpty()) {
-            _snackbarMessage.postValue(Event(SnackbarMessage(
-                messageId = "아이디를 입력해주세요.",
-                actionId = R.string.ok,
-                requestChangeId = UUID.randomUUID().toString()
-            )))
+            _snackbarMessage.postValue(
+                Event(
+                    SnackbarMessage(
+                        messageId = "아이디를 입력해주세요.",
+                        actionId = R.string.ok,
+                        requestChangeId = UUID.randomUUID().toString()
+                    )
+                )
+            )
         } else if (pw.isEmpty()) {
-            _snackbarMessage.postValue(Event(SnackbarMessage(
-                messageId = "비밀번호를 입력해주세요.",
-                actionId = R.string.ok,
-                requestChangeId = UUID.randomUUID().toString()
-            )))
+            _snackbarMessage.postValue(
+                Event(
+                    SnackbarMessage(
+                        messageId = "비밀번호를 입력해주세요.",
+                        actionId = R.string.ok,
+                        requestChangeId = UUID.randomUUID().toString()
+                    )
+                )
+            )
         } else {
             viewModelScope.launch(exceptionHandler) {
-                    isLoading.value = true
-                    val response = loginUseCase.invoke(id, pw)
-                    with(preferenceManger) {
-                        accessToken = response.accessToken
-                        refreshToken = response.refreshToken
-                        userName = id
-                    }
-                    isLoading.value = false
-                    _successLogin.postValue(Event(true))
+                showProgress()
+                val response = loginUseCase.invoke(id, pw)
+                with(preferenceManger) {
+                    accessToken = response.accessToken
+                    refreshToken = response.refreshToken
+                    userName = id
+                }
+                showProgress()
+                _successLogin.postValue(Event(true))
             }
 
         }

@@ -36,41 +36,63 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_id"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_extra_large"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_large"
             android:hint="아이디"
-            android:inputType="text"
-            android:padding="12dp"
-            android:text="@={vm.id}"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_person_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_in_iv_logo" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_iv_logo">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={vm.id}"
+                android:inputType="text"
+                />
 
-        <androidx.appcompat.widget.AppCompatEditText
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_pw"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_large"
             android:hint="비밀번호"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:text="@={vm.pw}"
-            app:layout_constraintTop_toBottomOf="@id/et_id" />
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_lock_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_id">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={vm.pw}"
+                android:inputType="textPassword"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_large"
             android:background="@drawable/bg_btn_solid_orange_radius_8dp"
             android:onClick="@{()->vm.onLoginClick()}"
             android:text="로그인"
@@ -130,16 +152,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/pb_loading"
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:isGone="@{vm.isLoading}"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            app:isGone="@{vm.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_gravity="center"
+                />
+
+
+        </FrameLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

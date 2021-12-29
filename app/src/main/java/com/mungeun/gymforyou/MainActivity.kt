@@ -7,7 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.mungeun.gymforyou.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,12 +24,13 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+            //mBinding.navHost as NavHostFragment
         navController = navHostFragment.navController
 
         //Setup bottom navigation
-        NavigationUI.setupWithNavController(mBinding.bottomNav, navController)
+        mBinding.bottomNav.setupWithNavController(navHostFragment.findNavController())
+        //NavigationUI.setupWithNavController(mBinding.bottomNav, navController)
         // 홈, 채팅, 더보기 일때만 바텀네비게이션 표시
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.homeFragment || destination.id == R.id.chattingFragment || destination.id == R.id.seeMoreFragment) {

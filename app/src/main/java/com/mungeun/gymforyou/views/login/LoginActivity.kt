@@ -51,7 +51,7 @@ class LoginActivity : BaseActivity() {
             })
             fetchState.observe(this@LoginActivity,{
                 showToast(it.toString())
-                viewModel.isLoading.value = false
+                hideProgress()
             })
         }
 

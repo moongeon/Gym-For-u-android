@@ -4,148 +4,143 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/sv_scrollview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_lodgement_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="정보"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideline_gym_detail"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_lodgement_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="정보"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_normal"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_gym_detail"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_explanation"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_gym_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/text_lodgement_info"
-                    tools:text="상품 설명 상세  설명 상품 설명 상세 설명 상품 설명
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_explanation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_gym_detail"
+            app:layout_constraintTop_toBottomOf="@+id/text_lodgement_info"
+            tools:text="상품 설명 상세  설명 상품 설명 상세 설명 상품 설명
 상품 설명 상세 설명 상품 설명 상세 설명 상품 설명
 상품 설명 상세 설명 상품 설명 상세 설명 상품 설명" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_gym_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_begin="24dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_gym_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_location"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_sys_location"
-                    app:layout_constraintBottom_toTopOf="@+id/img_time"
-                    app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_explanation" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_location"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_sys_location"
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/appCompatTextView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="10dp"
-                    android:text="가산디지털단지1로 175, 3F 305호"
-                    app:layout_constraintStart_toEndOf="@+id/img_location"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_explanation" />
+            app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_explanation" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_time"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_clock"
-                    app:layout_constraintBottom_toTopOf="@+id/img_phoneNum"
-                    app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/img_location" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/appCompatTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="12sp"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:text="09:00 - 21:00"
-                    app:layout_constraintBottom_toTopOf="@+id/appCompatTextView3"
-                    app:layout_constraintStart_toEndOf="@+id/img_time"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+            android:layout_marginStart="@dimen/margin_small"
+            android:text="가산디지털단지1로 175, 3F 305호"
+            android:textSize="12sp"
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_phoneNum"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_sys_phone"
-                    app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/img_time" />
+            app:layout_constraintStart_toEndOf="@+id/img_location"
+            app:layout_constraintTop_toTopOf="@+id/img_location" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/appCompatTextView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:textSize="12sp"
-                    android:text="09:00 - 21:00"
-                    app:layout_constraintStart_toEndOf="@+id/img_phoneNum"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_time"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
+            app:layout_constraintTop_toBottomOf="@+id/img_location" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_homepage"
-                    android:layout_width="16dp"
-                    android:layout_height="22dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_internet"
-                    app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/img_phoneNum" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:text="09:00 - 21:00"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/img_time"
+            app:layout_constraintTop_toTopOf="@+id/img_time" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/appCompatTextView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="10dp"
-                    android:text="www.naver.com"
-                    app:layout_constraintStart_toEndOf="@+id/img_phoneNum"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_phoneNum"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_sys_phone"
+            app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
+            app:layout_constraintTop_toBottomOf="@+id/img_time" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="312dp"
-                    android:layout_height="48dp"
-                    android:drawableStart="@drawable/ic_sys_chat"
-                    android:layout_marginTop="60dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="110dp"
-                    android:text="@string/gymdetail_chat_inquiry"
-                    android:textColor="@color/white_FFFFFF"
-                    android:background="@drawable/bg_btn_solid_orange_radius_8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatTextView4" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="phone"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginStart="@dimen/margin_small"
+            android:text="010-1111-2222"
+            android:textSize="12sp"
+
+            app:layout_constraintStart_toEndOf="@+id/img_phoneNum"
+            app:layout_constraintTop_toTopOf="@+id/img_phoneNum" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_homepage"
+            android:layout_width="16dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_internet"
+            app:layout_constraintStart_toStartOf="@id/guideline_gym_detail"
+            app:layout_constraintTop_toBottomOf="@+id/img_phoneNum" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="www.naver.com"
+            android:layout_marginStart="@dimen/txt_small"
+            android:textSize="12sp"
+
+            app:layout_constraintStart_toEndOf="@+id/img_homepage"
+            app:layout_constraintTop_toTopOf="@+id/img_homepage" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="312dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/bg_btn_solid_orange_radius_8dp"
+            android:drawableStart="@drawable/ic_sys_chat"
+            android:gravity="center_vertical"
+            android:paddingStart="110dp"
+            android:text="@string/gymdetail_chat_inquiry"
+            android:textColor="@color/white_FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appCompatTextView4" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

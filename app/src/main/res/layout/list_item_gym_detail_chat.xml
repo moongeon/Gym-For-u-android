@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetailChat" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:lineSpacingExtra="6sp"
+            android:text="@{data.name}"
+            android:textColor="@color/black_32383E"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="괴짜 브로콜리" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_gym_groupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_micro"
+            android:lineSpacingExtra="6sp"
+            android:text="모임"
+            android:textColor="@color/black_32383E"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="38dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/margin_micro"
+            android:background="@drawable/bg_white_stroke_gray_radius_4dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_gym_groupName"
+            app:layout_constraintTop_toTopOf="@+id/tv_gym_groupName">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/ic_person_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="10"
+                android:textColor="@color/gray_72787E"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageview_person"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_gym_detail_chat_tag"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:itemCount="2"
+            tools:listitem="@layout/list_item_gym_detail_chat_hash_tag"
+            />
+
+        <View
+            android:id="@+id/view_half"
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="@dimen/margin_micro"
+            android:background="@color/gray_72787E"
+            app:layout_constraintStart_toEndOf="@+id/recyclerview_gym_detail_chat_tag"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="@dimen/margin_micro"
+            android:text="2일전"
+            android:textColor="@color/gray_72787E"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_half"
+            app:layout_constraintStart_toEndOf="@+id/view_half"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="2일전" />
+
+
+        <View
+            android:id="@+id/view_below_review"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="19dp"
+            android:background="@color/white_gray_F4F4F4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_gym_detail_chat_tag" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

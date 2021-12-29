@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graphs_keep"
+    app:startDestination="@id/homeFragment">
+
+    <keep_state_fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mungeun.gymforyou.views.home.HomeFragment"
+        android:label="HomeFragment"/>
+    <keep_state_fragment
+        android:id="@+id/chattingFragment"
+        android:name="com.mungeun.gymforyou.views.chatting.ChattingFragment"
+        android:label="ChattingFragment" />
+    <keep_state_fragment
+        android:id="@+id/seeMoreFragment"
+        android:name="com.mungeun.gymforyou.views.see_more.SeeMoreFragment"
+        android:label="SeeMoreFragment" />
+
+</navigation>

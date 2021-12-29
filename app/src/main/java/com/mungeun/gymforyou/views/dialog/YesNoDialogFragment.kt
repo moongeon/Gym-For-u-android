@@ -7,8 +7,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class YesNoDialogFragment : AppCompatDialogFragment() {
 
-
-
     companion object{
         lateinit var listener : onClickYesNo
         private const val TITLE = "title"

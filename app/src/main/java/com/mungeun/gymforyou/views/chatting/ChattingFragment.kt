@@ -13,13 +13,14 @@ import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.adapters.CattingAdapter
 import com.mungeun.gymforyou.databinding.FragmentChattingBinding
 import com.mungeun.gymforyou.utilities.EventObserver
+import com.mungeun.gymforyou.utilities.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChattingFragment : Fragment() {
 
     private val viewModel: ChattingViewModel by viewModels()
-    private lateinit var mBinding: FragmentChattingBinding
+    private var mBinding by autoCleared<FragmentChattingBinding>()
 //
 //    private val dataSet = arrayListOf<Chat>().apply {
 //        add(Chat("문근1", "하이1",""))
@@ -37,7 +38,7 @@ class ChattingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var cattingAdapter = CattingAdapter()
-        mBinding = FragmentChattingBinding.inflate(inflater, container, false).apply {
+        mBinding = FragmentChattingBinding.inflate(inflater,container,false).apply {
             vm = viewModel
             chattingList.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

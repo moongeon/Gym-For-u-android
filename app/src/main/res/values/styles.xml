@@ -38,5 +38,18 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
+    <style name="Widget.GymForYou.AppBar" parent="@style/Widget.Design.AppBarLayout">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <style name="MyAppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MyAppModalStyle</item>
+    </style>
+
+    <style name="MyAppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_white_top_radius_16dp</item>
+    </style>
+
 
 </resources>

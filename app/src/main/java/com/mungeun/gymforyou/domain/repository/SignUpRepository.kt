@@ -9,6 +9,6 @@ interface SignUpRepository {
         name : String,
         phoneNumber : String,
         picto : String
-    ): User
+    )
 
 }

@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Theme.GymForYou" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/orange_F79256</item>
         <item name="colorPrimaryDark">@color/orange_F79256</item>
@@ -11,19 +12,5 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
-
-    <style name="Theme.GymForYou.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.GymForYou.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
-        <item name="appWidgetRadius">8dp</item>
-        <item name="appWidgetPadding">4dp</item>
-        <item name="appWidgetInnerRadius">4dp</item>
-    </style>
-
-    <style name="Theme.GymForYou.AppWidgetContainer" parent="Theme.GymForYou.AppWidgetContainerParent" />
-
 
 </resources>

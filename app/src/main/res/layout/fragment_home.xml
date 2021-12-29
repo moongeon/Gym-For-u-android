@@ -24,30 +24,29 @@
         android:layout_height="match_parent"
         tools:context=".views.home.HomeFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <View
+            android:id="@+id/status_bar"
+            style="@style/Widget.GymForYou.AppBar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/appbar"
+            style="@style/Widget.GymForYou.AppBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/email_signup_app_bar_height"
-            android:background="?attr/colorSurface"
-            android:elevation="8dp"
-            android:fitsSystemWindows="true"
-            android:stateListAnimator="@animator/show_toolbar"
+            android:layout_height="?actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/status_bar"
+            app:menu="@menu/map_menu"
+            app:title="헬스 지도"
+            app:titleTextColor="@color/black">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorSurface"
-                android:elevation="8dp"
-                app:contentInsetStartWithNavigation="0dp"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/map_menu"
-                app:titleTextColor="@color/black" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/map_view"
@@ -56,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
 
 
             <Button

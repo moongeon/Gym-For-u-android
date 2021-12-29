@@ -14,7 +14,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.FragmentHomeBinding
@@ -22,6 +21,7 @@ import com.mungeun.gymforyou.domain.model.gym.Address
 import com.mungeun.gymforyou.domain.model.gym.Gym
 import com.mungeun.gymforyou.domain.model.gym.Location
 import com.mungeun.gymforyou.utilities.EventObserver
+import com.mungeun.gymforyou.utilities.autoCleared
 import com.mungeun.gymforyou.utilities.preference.PreferenceManger
 import com.mungeun.gymforyou.widget.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +35,7 @@ import javax.inject.Inject
 class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEventListener,
     MapView.CurrentLocationEventListener {
     private val viewModel: HomeViewModel by viewModels()
-    private val mBinding by viewBinding(FragmentHomeBinding::bind)
+    private var mBinding by autoCleared<FragmentHomeBinding>()
     private lateinit var mapView: MapView
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private lateinit var currentMapPoint: MapPoint
@@ -53,7 +53,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         savedInstanceState: Bundle?
     ): View? {
         var adapter = HomeAdapter()
-        mBinding.apply {
+        mBinding = FragmentHomeBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@HomeFragment
             vm = viewModel
             recyclerviewGym.adapter = adapter
@@ -65,12 +65,23 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                 BottomSheetBehavior.from(mBinding.bottomSheet).state =
                     BottomSheetBehavior.STATE_HALF_EXPANDED
             }
-            toolbar.setOnMenuItemClickListener { item ->
-                if (item.itemId == R.id.action_share) {
-                    findNavController().navigate(R.id.alarmFragment)
-                    true
-                } else {
-                    false
+            appbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_home_alarm -> {
+                        findNavController().navigate(R.id.alarmFragment)
+                        true
+                    }
+                    R.id.action_my_location -> {
+//                        permissinLocation = !permissinLocation
+
+                        if (permissinLocation) {
+
+                        }
+//                                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading else
+//                                MapView.CurrentLocationTrackingMode.TrackingModeOff
+                        true
+                    }
+                    else -> throw IndexOutOfBoundsException()
                 }
             }
         }
@@ -102,14 +113,27 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         mapView = MapView(activity)
         mapViewContainer = mBinding.mapView as ViewGroup
 
-        enableMyLocation(true)
+
         //mapView.setMapCenterPoint(currentMapPoint, true)
         mapViewContainer.addView(mapView)
         // 현재위치 이동
+
+        enableMyLocation(true)
         if (permissinLocation) mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBinding.bottomSheet)
+
+        val marker = MapPOIItem()
+        marker.apply {
+            itemName = "서울헬스장"
+            mapPoint = MapPoint.mapPointWithGeoCoord(
+                37.565949,
+                126.978023
+            )
+            markerType = MapPOIItem.MarkerType.RedPin
+        }
+        mapView.addPOIItem(marker)
 
         // kakao map 관련 리스너 등록록
         mapView.setMapViewEventListener(this)
@@ -121,6 +145,8 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
 
     override fun onStop() {
         mapViewContainer.removeView(mapView)
+        BottomSheetBehavior.from(mBinding.bottomSheet).state =
+            BottomSheetBehavior.STATE_HIDDEN
         super.onStop()
     }
 
@@ -172,7 +198,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     }
 
     override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {
-        Log.d("", "")
+        mBinding.hasCardView = false
     }
 
     override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {

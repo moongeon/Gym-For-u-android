@@ -11,9 +11,12 @@ import java.net.UnknownHostException
 
 open class BaseViewModel : ViewModel() {
 
-    protected val _fetchState = MutableLiveData<FetchState>()
+    private var _fetchState = MutableLiveData<FetchState>()
     val fetchState : LiveData<FetchState>
         get() = _fetchState
+
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean> get() = _isLoading
 
     protected val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
@@ -25,6 +28,14 @@ open class BaseViewModel : ViewModel() {
             is ConnectException -> _fetchState.postValue(FetchState.CONNECT_ERROR)
             else -> _fetchState.postValue(FetchState.FAIL)
         }
+    }
+
+    fun showProgress() {
+        _isLoading.value = true
+    }
+
+    fun hideProgress() {
+        _isLoading.value = false
     }
 
     companion object{

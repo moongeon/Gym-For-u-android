@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mungeun.gymforyou.databinding.FragmentGymDetailHomeBinding
+import com.mungeun.gymforyou.utilities.autoCleared
 
 
 class GymDetailHomeFragment : Fragment() {
 
-
-    private lateinit var mBinding : FragmentGymDetailHomeBinding
-
+    private var mBinding by autoCleared<FragmentGymDetailHomeBinding>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

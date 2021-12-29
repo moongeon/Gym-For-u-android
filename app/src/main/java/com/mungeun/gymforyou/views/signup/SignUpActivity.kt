@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.ActivitySignUpBinding
 import com.mungeun.gymforyou.views.email_signup.EmailSignUpActivity
@@ -24,7 +23,7 @@ class SignUpActivity : AppCompatActivity() {
             vm = viewModel
             lifecycleOwner = this@SignUpActivity
             toolbar.setNavigationOnClickListener {
-                it.findNavController().navigateUp()
+                finish()
             }
         }
 
