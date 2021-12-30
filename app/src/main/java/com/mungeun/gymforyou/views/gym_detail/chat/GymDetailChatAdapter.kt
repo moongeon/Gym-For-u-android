@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mungeun.domain.model.gym.gym_detail.GymDetailChat
 import com.mungeun.gymforyou.databinding.ListItemGymDetailChatBinding
-import com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetailChat
 
 class GymDetailChatAdapter : ListAdapter<GymDetailChat,RecyclerView.ViewHolder>(GymDetailChatDiffCallback()){
 

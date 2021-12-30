@@ -4,7 +4,7 @@
 <data>
     <variable
         name="data"
-        type="com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetail" />
+        type="com.mungeun.domain.model.gym.gym_detail.GymDetail" />
 </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

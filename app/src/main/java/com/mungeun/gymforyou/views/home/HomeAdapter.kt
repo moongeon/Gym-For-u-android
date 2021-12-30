@@ -7,8 +7,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mungeun.domain.model.gym.Gym
 import com.mungeun.gymforyou.databinding.ListItemHomeBinding
-import com.mungeun.gymforyou.domain.model.gym.Gym
+
 
 
 class HomeAdapter :

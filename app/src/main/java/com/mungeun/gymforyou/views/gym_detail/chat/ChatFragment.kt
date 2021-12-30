@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mungeun.domain.model.gym.gym_detail.GymDetailChat
 import com.mungeun.gymforyou.databinding.FragmentChatBinding
-import com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetailChat
 import com.mungeun.gymforyou.utilities.autoCleared
 
 

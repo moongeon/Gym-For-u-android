@@ -34,8 +34,6 @@ class EmailSignUpViewModel @Inject constructor(private val signUpUseCase: SignUp
     private val _signUpSuccess = MutableLiveData<Event<Boolean>>()
 
 
-
-
     val isEmailEmpty: LiveData<Event<Boolean>> get() = _isEmailEmpty
     val isPwEmpty: LiveData<Event<Boolean>> get() = _isPwEmpty
     val isPwConfirmEmpty: LiveData<Event<Boolean>> get() = _isPwConfirmEmpty
@@ -76,22 +74,21 @@ class EmailSignUpViewModel @Inject constructor(private val signUpUseCase: SignUp
                 }
                 else -> {
                     viewModelScope.launch(exceptionHandler) {
-                            showProgress()
-                            signUpUseCase.invoke(
-                                email,
-                                pw,
-                                name,
-                                phoneNm,
-                                ""
-                            )
-                            hideProgress()
+                        showProgress()
+                        signUpUseCase.invoke(
+                            email,
+                            pw,
+                            name,
+                            phoneNm,
+                            ""
+                        )
+                        hideProgress()
                         _signUpSuccess.postValue(Event(true))
-                        }
                     }
-
                 }
+
             }
-         catch (e: Exception) {
+        } catch (e: Exception) {
 
         }
     }

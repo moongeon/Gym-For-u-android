@@ -3,7 +3,7 @@ package com.mungeun.gymforyou.views.gym_detail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.mungeun.gymforyou.domain.model.gym.Gym
+import com.mungeun.domain.model.gym.Gym
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

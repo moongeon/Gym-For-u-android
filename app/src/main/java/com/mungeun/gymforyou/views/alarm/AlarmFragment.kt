@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mungeun.domain.model.alarm.Alarm
 import com.mungeun.gymforyou.databinding.FragmentAlarmBinding
-import com.mungeun.gymforyou.domain.model.alarm.Alarm
 import com.mungeun.gymforyou.utilities.autoCleared
 
 class AlarmFragment : Fragment() {

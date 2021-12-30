@@ -15,7 +15,7 @@
 
         <variable
             name="gym"
-            type="com.mungeun.gymforyou.domain.model.gym.Gym" />
+            type="com.mungeun.domain.model.gym.Gym" />
     </data>
 
 
@@ -96,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_solid_white_ffff_radius_8dp"
-                    android:onClick="@{() -> vm.goGymDetail(gym)}"
+                    android:onClick="@{() -> vm.goGymDetail()}"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView

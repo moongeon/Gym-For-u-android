@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mungeun.domain.model.gym.gym_detail.GymDetail
 import com.mungeun.gymforyou.databinding.ListItemReviewBinding
-import com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetail
 
 class ReviewAdapter : ListAdapter<GymDetail,RecyclerView.ViewHolder>(ReviewDiffCallback()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

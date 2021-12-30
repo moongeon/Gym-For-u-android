@@ -46,10 +46,9 @@
         android:name="com.mungeun.gymforyou.views.gym_detail.GymDetailFragment"
         android:label="GymDetailFragment" >
 
-
         <argument
             android:name="gymData"
-            app:argType="com.mungeun.gymforyou.domain.model.gym.Gym" />
+            app:argType="com.mungeun.domain.model.gym.Gym" />
         <action
             android:id="@+id/action_gymDetailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -67,7 +66,7 @@
         android:label="GymDetailHomeFragment" >
         <argument
             android:name="gymData"
-            app:argType="com.mungeun.gymforyou.domain.model.gym.Gym" />
+            app:argType="com.mungeun.domain.model.gym.Gym" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"

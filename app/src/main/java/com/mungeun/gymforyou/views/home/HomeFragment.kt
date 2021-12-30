@@ -15,11 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mungeun.domain.model.gym.Address
+import com.mungeun.domain.model.gym.Gym
+import com.mungeun.domain.model.gym.Location
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.FragmentHomeBinding
-import com.mungeun.gymforyou.domain.model.gym.Address
-import com.mungeun.gymforyou.domain.model.gym.Gym
-import com.mungeun.gymforyou.domain.model.gym.Location
 import com.mungeun.gymforyou.utilities.EventObserver
 import com.mungeun.gymforyou.utilities.autoCleared
 import com.mungeun.gymforyou.utilities.preference.PreferenceManger

@@ -1,22 +1,25 @@
 package com.mungeun.gymforyou.di
 
-import com.mungeun.data.repository.login.LoginRepositoryImpl
-import com.mungeun.data.repository.login.SignUpRepositoryImpl
+
+import com.mungeun.data.api.GymApiService
+import com.mungeun.data.api.LoginApiService
+import com.mungeun.data.api.SignupApiService
+import com.mungeun.data.gym.GymRepositoryImpl
+import com.mungeun.data.login.LoginRepositoryImpl
+import com.mungeun.data.signup.SignUpRepositoryImpl
+import com.mungeun.domain.repository.GymRepository
+import com.mungeun.domain.repository.LoginRepository
+import com.mungeun.domain.repository.SignUpRepository
 import com.mungeun.domain.usecase.GymUseCase
+
 import com.mungeun.domain.usecase.LoginUseCase
 import com.mungeun.domain.usecase.SignUpUseCase
-import com.mungeun.gymforyou.data.api.GymApiService
-import com.mungeun.gymforyou.data.api.LoginApiService
-import com.mungeun.gymforyou.data.api.SignupApiService
-import com.mungeun.gymforyou.data.gym.GymRepositoryImpl
-import com.mungeun.gymforyou.domain.repository.GymRepository
-import com.mungeun.gymforyou.domain.repository.LoginRepository
-import com.mungeun.gymforyou.domain.repository.SignUpRepository
 import com.mungeun.gymforyou.utilities.preference.PreferenceManger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,10 +32,20 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+        preferenceManger: PreferenceManger
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BASIC
+            })
+            .addInterceptor(Interceptor { chain ->
+                with(chain) {
+                    val newRequest = request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + preferenceManger.accessToken)
+                        .build()
+                    proceed(newRequest)
+                }
             })
             .build()
     }
@@ -59,27 +72,13 @@ class ApiModule {
 //        return retrofit.create(GymApiService::class.java)
 //    }
 
-
-    @Provides
-    @Singleton
-    fun provideLoginApiService(preferenceManger: PreferenceManger) : LoginApiService{
-        return LoginApiService.create(preferenceManger)
-    }
-
-    @Provides
-    @Singleton
-    fun provideGymApiService(preferenceManger: PreferenceManger): GymApiService {
-        return GymApiService.create(preferenceManger)
-    }
-
-
+    // 회원가입
     @Provides
     @Singleton
     fun provideSignUpService(retrofit: Retrofit): SignupApiService {
         return retrofit.create(SignupApiService::class.java)
     }
 
-// 회원가입
     @Provides
     @Singleton
     fun provideSignUpRepository(signupApiService: SignupApiService): SignUpRepository {
@@ -92,13 +91,21 @@ class ApiModule {
         return SignUpUseCase(signUpRepository)
     }
 
+
+    // 헬스장
+    @Provides
+    @Singleton
+    fun provideGymApiService(retrofit: Retrofit): GymApiService {
+        return retrofit.create(GymApiService::class.java)
+    }
+
     @Provides
     @Singleton
     fun provideGymRepository(
         gymApiService: GymApiService,
         preferenceManger: PreferenceManger,
     ): GymRepository {
-        return GymRepositoryImpl(gymApiService, preferenceManger)
+        return GymRepositoryImpl(gymApiService)
     }
 
     @Provides
@@ -108,11 +115,13 @@ class ApiModule {
     }
 
 
-
-
-
-
     // 로그인
+    @Provides
+    @Singleton
+    fun provideLoginApiService(retrofit: Retrofit): LoginApiService {
+        return retrofit.create(LoginApiService::class.java)
+    }
+
     @Provides
     @Singleton
     fun provideLoginRepository(loginApiService: LoginApiService): LoginRepository {

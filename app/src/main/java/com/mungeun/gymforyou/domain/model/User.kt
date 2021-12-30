@@ -1,8 +1,0 @@
-package com.mungeun.gymforyou.domain.model
-
-data class User(
-    val email: String,
-    val name: String,
-    val phoneNumber: String,
-    val picto : String
-)

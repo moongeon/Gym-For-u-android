@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mungeun.gymforyou.databinding.FragmentReviewBinding
-import com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetail
+import com.mungeun.domain.model.gym.gym_detail.GymDetail
 
 
 class ReviewFragment : Fragment() {

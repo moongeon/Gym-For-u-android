@@ -1,11 +1,12 @@
 package com.mungeun.domain.repository
 
-import com.mungeun.domain.model.Login
+import com.mungeun.domain.model.token.Token
+
 
 interface LoginRepository {
-    suspend fun getLoginInfo(
+    suspend fun postLoginInfo(
         id: String,
-        passWord: String
-    ): Login
+        password: String
+    ): Token
 
 }

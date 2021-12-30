@@ -14,7 +14,7 @@
             />
         <variable
             name="gym"
-            type="com.mungeun.gymforyou.domain.model.gym.Gym" />
+            type="com.mungeun.domain.model.gym.Gym" />
     </data>
 
 

@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.mungeun.gymforyou.domain.model.gym.gym_detail.GymDetailChat" />
+            type="com.mungeun.domain.model.gym.gym_detail.GymDetailChat" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,22 +60,22 @@
                 android:id="@+id/imageview_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:background="@drawable/ic_person_24"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView_person"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:text="10"
                 android:textColor="@color/gray_72787E"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/imageview_person"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="10" />
@@ -91,8 +91,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/tv_name"
             tools:itemCount="2"
-            tools:listitem="@layout/list_item_gym_detail_chat_hash_tag"
-            />
+            tools:listitem="@layout/list_item_gym_detail_chat_hash_tag" />
 
         <View
             android:id="@+id/view_half"

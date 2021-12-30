@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mungeun.domain.model.alarm.Alarm
 import com.mungeun.gymforyou.databinding.ListItemAlarmBinding
-import com.mungeun.gymforyou.domain.model.alarm.Alarm
 
 
 class AlarmAdapter : ListAdapter<Alarm, AlarmAdapter.ViewHolder>(Diffcallback()) {

@@ -3,9 +3,11 @@ package com.mungeun.gymforyou.views.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mungeun.domain.model.gym.Gym
 import com.mungeun.domain.usecase.GymUseCase
 import com.mungeun.gymforyou.base.BaseViewModel
-import com.mungeun.gymforyou.domain.model.gym.Gym
+
+
 import com.mungeun.gymforyou.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -33,8 +35,8 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    fun goGymDetail(gym : Gym) {
-        var a = gym
+    fun goGymDetail() {
+
         _goGymDetail.value = Event(true)
     }
 }

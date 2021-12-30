@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.mungeun.gymforyou.domain.model.alarm.Alarm" />
+            type="com.mungeun.domain.model.alarm.Alarm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
