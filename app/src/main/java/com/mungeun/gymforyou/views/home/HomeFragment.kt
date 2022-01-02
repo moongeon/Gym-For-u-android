@@ -3,6 +3,7 @@ package com.mungeun.gymforyou.views.home
 
 import android.Manifest
 import android.app.Dialog
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -15,9 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mungeun.domain.model.gym.Address
 import com.mungeun.domain.model.gym.Gym
-import com.mungeun.domain.model.gym.Location
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.FragmentHomeBinding
 import com.mungeun.gymforyou.utilities.EventObserver
@@ -46,6 +45,36 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     // 의존성 주입
     @Inject
     lateinit var preferenceManger: PreferenceManger
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
 
 
     override fun onCreateView(
@@ -101,14 +130,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                 showMapViewMarker(it)
             })
 
-
         }
-
-        return mBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         mapView = MapView(activity)
         mapViewContainer = mBinding.mapView as ViewGroup
@@ -139,6 +161,13 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         mapView.setMapViewEventListener(this)
         mapView.setPOIItemEventListener(this)
         mapView.setCurrentLocationEventListener(this)
+
+
+        return mBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
     }
@@ -210,20 +239,32 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     }
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-        mBinding.hasCardView = true
+        var list = viewModel.gymList.value
         if (p1 != null) {
-            mBinding.gym = Gym(
-                _id = "",
-                address = Address("", "", ""),
-                description = "",
-                homepage = "",
-                location = Location(0.toDouble(), 0.toDouble()),
-                name = p1.itemName,
-                thumbnail = "헬스, 스쿼시가 가능한 전문 스포츠 센터입니다!!",
-            )
-        }
+            if (list != null) {
+                if (list.find { it.name == p1.itemName } != null) {
+                    var gym = list?.let { it -> it.find { it.name == p1.itemName } } as Gym
+                    mBinding.hasCardView = true
+                    with(gym) {
+                        mBinding.gym = Gym(
+                            _id = _id,
+                            address = address,
+                            description = description,
+                            homepage = homepage,
+                            location = location,
+                            name = name,
+                            thumbnail = thumbnail,
+                        )
+                    }
+                    return
+                }
 
+            }
+
+        }
+        mBinding.hasCardView = false
     }
+
 
     override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
         Log.d("", "")
@@ -244,7 +285,6 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     private fun showMapViewMarker(gymList: List<Gym>) {
         // 맵뷰 객체 생성
         gymList.forEach {
-
             val marker = MapPOIItem()
             marker.apply {
                 itemName = it.name

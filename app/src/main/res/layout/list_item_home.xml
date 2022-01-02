@@ -17,12 +17,10 @@
             type="com.mungeun.domain.model.gym.Gym" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:onClick="@{clickListener}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_stroke_gray_c8c8c8_radius_8dp"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_small"
@@ -30,36 +28,48 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_photo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_margin="@dimen/radius_small"
             android:src="@drawable/ic_alarm_pic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"        />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/main_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black_32383E"
             android:text="@{gym.name}"
             android:layout_marginStart="@dimen/radius_small"
             app:layout_constraintBottom_toTopOf="@+id/sub_title"
-            app:layout_constraintStart_toEndOf="@+id/img_photo"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/sub_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/gray_72787E"
             android:text="@{gym.address.main}"
             android:layout_marginStart="@dimen/radius_small"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_photo"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_title" />
 
-
-
-
+        <View
+            android:id="@+id/view_below_review"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:background="@color/white_gray_F4F4F4"
+            app:layout_constraintTop_toBottomOf="@+id/sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

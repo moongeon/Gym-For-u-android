@@ -114,7 +114,6 @@ class ApiModule {
         return GymUseCase(gymRepository)
     }
 
-
     // 로그인
     @Provides
     @Singleton

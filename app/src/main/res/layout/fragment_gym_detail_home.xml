@@ -125,19 +125,19 @@
             app:layout_constraintStart_toEndOf="@+id/img_homepage"
             app:layout_constraintTop_toTopOf="@+id/img_homepage" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="312dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/bg_btn_solid_orange_radius_8dp"
-            android:drawableStart="@drawable/ic_sys_chat"
-            android:gravity="center_vertical"
-            android:paddingStart="110dp"
-            android:text="@string/gymdetail_chat_inquiry"
-            android:textColor="@color/white_FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView4" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:layout_width="312dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:background="@drawable/bg_btn_solid_orange_radius_8dp"-->
+<!--            android:drawableStart="@drawable/ic_sys_chat"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:paddingStart="110dp"-->
+<!--            android:text="@string/gymdetail_chat_inquiry"-->
+<!--            android:textColor="@color/white_FFFFFF"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/appCompatTextView4" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
