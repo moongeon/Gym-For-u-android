@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mungeun.gymforyou.R
-import com.mungeun.gymforyou.adapters.CattingAdapter
+import com.mungeun.gymforyou.adapters.ChattingAdapter
 import com.mungeun.gymforyou.databinding.FragmentChattingBinding
 import com.mungeun.gymforyou.utilities.EventObserver
 import com.mungeun.gymforyou.utilities.autoCleared
@@ -37,7 +37,7 @@ class ChattingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var cattingAdapter = CattingAdapter()
+        var cattingAdapter = ChattingAdapter()
         mBinding = FragmentChattingBinding.inflate(inflater,container,false).apply {
             vm = viewModel
             chattingList.apply {

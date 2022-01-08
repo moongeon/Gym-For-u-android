@@ -11,10 +11,19 @@
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_alarmFragment"
-            app:destination="@id/alarmFragment" />
+            app:destination="@id/alarmFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_gymDetailFragment"
-            app:destination="@id/gymDetailFragment" />
+            app:destination="@id/gymDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/chattingFragment"
@@ -22,10 +31,18 @@
         android:label="ChattingFragment" >
         <action
             android:id="@+id/action_chattingFragment_to_newChattingFragment"
-            app:destination="@id/newChattingFragment" />
+            app:destination="@id/newChattingFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_chattingFragment_to_chatDetailFragment"
-            app:destination="@id/chatDetailFragment" />
+            app:destination="@id/chatDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/seeMoreFragment"
@@ -51,10 +68,15 @@
             app:argType="com.mungeun.domain.model.gym.Gym" />
         <action
             android:id="@+id/action_gymDetailFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="false" />
         <action
             android:id="@+id/action_gymDetailFragment_to_gymDetailHomeFragment"
-            app:destination="@id/gymDetailHomeFragment" />
+            app:destination="@id/gymDetailHomeFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/chatDetailFragment"

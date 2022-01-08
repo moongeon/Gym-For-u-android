@@ -3,7 +3,6 @@ package com.mungeun.gymforyou.views.home
 
 import android.Manifest
 import android.app.Dialog
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -47,34 +46,34 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     lateinit var preferenceManger: PreferenceManger
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//    }
+//
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView( )
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//    }
+//
+//    override fun onDetach() {
+//        super.onDetach()
+//    }
 
 
     override fun onCreateView(
@@ -94,17 +93,21 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                 BottomSheetBehavior.from(mBinding.bottomSheet).state =
                     BottomSheetBehavior.STATE_HALF_EXPANDED
             }
+            //appbar 클릭 이벤트리스너
             appbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_home_alarm -> {
-                        findNavController().navigate(R.id.alarmFragment)
+                        val directions = HomeFragmentDirections.actionHomeFragmentToAlarmFragment()
+                        findNavController().navigate(directions)
                         true
                     }
                     R.id.action_my_location -> {
 //                        permissinLocation = !permissinLocation
 
                         if (permissinLocation) {
-
+                            this@HomeFragment.mapView.setMapCenterPoint(currentMapPoint, true)
+                        } else {
+                            enableMyLocation(true)
                         }
 //                                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading else
 //                                MapView.CurrentLocationTrackingMode.TrackingModeOff
@@ -133,29 +136,29 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         }
 
         mapView = MapView(activity)
-        mapViewContainer = mBinding.mapView as ViewGroup
+        mapViewContainer = mBinding.mapView
 
 
-        //mapView.setMapCenterPoint(currentMapPoint, true)
         mapViewContainer.addView(mapView)
         // 현재위치 이동
-
         enableMyLocation(true)
         if (permissinLocation) mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBinding.bottomSheet)
 
-        val marker = MapPOIItem()
-        marker.apply {
-            itemName = "서울헬스장"
-            mapPoint = MapPoint.mapPointWithGeoCoord(
-                37.565949,
-                126.978023
-            )
-            markerType = MapPOIItem.MarkerType.RedPin
-        }
-        mapView.addPOIItem(marker)
+        // 테스트 용
+//        val marker = MapPOIItem()
+//        marker.apply {
+//            itemName = "서울헬스장"
+//            mapPoint = MapPoint.mapPointWithGeoCoord(
+//                37.565949,
+//                126.978023
+//            )
+//            markerType = MapPOIItem.MarkerType.CustomImage
+//        }
+//
+//        mapView.addPOIItem(marker)
 
         // kakao map 관련 리스너 등록록
         mapView.setMapViewEventListener(this)
@@ -238,6 +241,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         Log.d("", "")
     }
 
+    // 마커 클릭 시
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
         var list = viewModel.gymList.value
         if (p1 != null) {
@@ -292,8 +296,12 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                     it.location.latitude,
                     it.location.longitude
                 )
-                markerType = MapPOIItem.MarkerType.RedPin
+                markerType = MapPOIItem.MarkerType.CustomImage
+                customImageResourceId = R.drawable.ic_marker_location
+                setCustomImageAnchor(0.5f,1.0f)
+                marker.isShowCalloutBalloonOnTouch = false
             }
+
             mapView.addPOIItem(marker)
 
 

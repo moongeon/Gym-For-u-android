@@ -86,7 +86,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_info"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_info"
@@ -118,7 +118,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_rule"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_rule"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_rule"
@@ -150,7 +150,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_personal_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_personal_info"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_personal_info"
@@ -182,7 +182,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_location_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_location_info"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_location_info"
@@ -215,7 +215,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_logout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_logout"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_logout"
@@ -247,7 +247,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_app_delete_auth"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_app_delete_auth"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_next_24" />
 
             <View
                 android:id="@+id/view_below_app_delete_auth"

@@ -46,17 +46,16 @@
             android:layout_marginEnd="@dimen/margin_large"
             android:hint="아이디"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_person_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_in_iv_logo">
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_iv_logo"
+            app:startIconDrawable="@drawable/ic_person_24">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={vm.id}"
                 android:inputType="text"
-                />
-
+                android:text="@={vm.id}" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,17 +70,16 @@
             android:layout_marginEnd="@dimen/margin_large"
             android:hint="비밀번호"
             app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_lock_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_id">
+            app:layout_constraintTop_toBottomOf="@id/et_id"
+            app:startIconDrawable="@drawable/ic_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={vm.pw}"
                 android:inputType="textPassword"
-                />
+                android:text="@={vm.pw}" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,14 +101,13 @@
 
         <com.skydoves.elasticviews.ElasticImageView
             android:id="@+id/iv_kakao_login"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:imageView_duration="300"
             app:imageView_scale="0.9"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_question"
             app:srcCompat="@drawable/button_kakao" />
 
@@ -169,12 +166,27 @@
                 android:id="@+id/pb_loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:indeterminate="true"
                 android:layout_gravity="center"
-                />
+                android:indeterminate="true" />
 
 
         </FrameLayout>
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
