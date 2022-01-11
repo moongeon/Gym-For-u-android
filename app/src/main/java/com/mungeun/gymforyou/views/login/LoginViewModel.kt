@@ -21,8 +21,8 @@ class LoginViewModel @Inject constructor(
 ) : BaseViewModel() {
     val id: MutableLiveData<String> = MutableLiveData("")
     val pw: MutableLiveData<String> = MutableLiveData("")
-    val gif =
-        "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif"
+    val gif =""
+//        "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif"
 
 
     // 메시지

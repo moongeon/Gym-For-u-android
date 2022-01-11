@@ -14,9 +14,11 @@ fun bindImageCircleFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
+            .error(R.drawable.ic_error_outline_24)
             .apply(RequestOptions.circleCropTransform())
             .into(view)
-
+    } else {
+        view.setImageResource(R.drawable.ic_error_outline_24)
     }
 }
 
@@ -25,13 +27,13 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
+            .error(R.drawable.ic_error_outline_24)
             .apply(RequestOptions.fitCenterTransform())
             .into(view)
-
+    } else {
+        view.setImageResource(R.drawable.ic_error_outline_24)
     }
 }
-
-
 
 
 @BindingAdapter("isGone")

@@ -32,7 +32,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_margin="@dimen/radius_small"
-            android:src="@drawable/ic_alarm_pic"
+            android:src="@drawable/ic_error_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
