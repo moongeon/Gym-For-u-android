@@ -25,6 +25,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import javax.net.ssl.X509TrustManager
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -33,12 +34,17 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        preferenceManger: PreferenceManger
+        preferenceManger: PreferenceManger,
+        selfSigningHelper: SelfSigningHelper
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BASIC
             })
+            .sslSocketFactory(
+                selfSigningHelper.sslContext.socketFactory,
+                selfSigningHelper.tmf.trustManagers[0] as X509TrustManager
+            )
             .addInterceptor(Interceptor { chain ->
                 with(chain) {
                     val newRequest = request().newBuilder()
@@ -54,7 +60,7 @@ class ApiModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://qazxswedc.iptime.org:3000/")
+            .baseUrl("https://qazxswedc.iptime.org:3000/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

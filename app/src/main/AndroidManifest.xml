@@ -56,10 +56,17 @@
             android:launchMode="singleTop"
             android:theme="@style/Theme.GymForYou.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-
+        <service android:name=".utilities.FirebaseService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="97ad9ec809ef77b7b1033f932b86e6c4" />
+
     </application>
 
 </manifest>
