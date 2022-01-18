@@ -2,7 +2,9 @@
 <resources>
     <dimen name="margin_micro">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_small_normal_half">16dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_normal_large_half">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_extra_large">64dp</dimen>
 
