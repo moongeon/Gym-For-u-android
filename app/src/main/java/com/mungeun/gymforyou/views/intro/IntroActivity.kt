@@ -35,7 +35,7 @@ class IntroActivity : AppCompatActivity() {
                     this@IntroActivity, R.anim.splash_in
                 )
             )
-            delay(300)
+            delay(400)
             mBinding.imageView2.startAnimation(
                 AnimationUtils.loadAnimation(
                     this@IntroActivity, R.anim.splash_out

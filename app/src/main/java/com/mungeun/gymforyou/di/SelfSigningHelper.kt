@@ -34,7 +34,7 @@ class SelfSigningHelper @Inject constructor(
         try {
             cf = CertificateFactory.getInstance("X.509")
 
-            caInput = context.resources.openRawResource(R.raw.thawte_rsa_ca_2018)
+            caInput = context.resources.openRawResource(R.raw.crt)
 
             ca = cf.generateCertificate(caInput)
             println("ca = ${(ca as X509Certificate).subjectDN}")

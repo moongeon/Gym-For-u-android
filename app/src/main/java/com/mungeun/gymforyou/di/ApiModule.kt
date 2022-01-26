@@ -45,6 +45,7 @@ class ApiModule {
                 selfSigningHelper.sslContext.socketFactory,
                 selfSigningHelper.tmf.trustManagers[0] as X509TrustManager
             )
+            .hostnameVerifier { hostname, session -> true }
             .addInterceptor(Interceptor { chain ->
                 with(chain) {
                     val newRequest = request().newBuilder()
