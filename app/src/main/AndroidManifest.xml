@@ -65,8 +65,6 @@
         </service>
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="97ad9ec809ef77b7b1033f932b86e6c4" />
-
+            android:value="${KAKAO_MAP_API_KEY}" />
     </application>
-
 </manifest>

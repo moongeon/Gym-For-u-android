@@ -3,18 +3,23 @@ package com.mungeun.gymforyou.views.home
 
 import android.Manifest
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.mungeun.domain.model.gym.Gym
 import com.mungeun.gymforyou.R
 import com.mungeun.gymforyou.databinding.FragmentHomeBinding
@@ -146,19 +151,6 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBinding.bottomSheet)
-
-        // 테스트 용
-//        val marker = MapPOIItem()
-//        marker.apply {
-//            itemName = "서울헬스장"
-//            mapPoint = MapPoint.mapPointWithGeoCoord(
-//                37.565949,
-//                126.978023
-//            )
-//            markerType = MapPOIItem.MarkerType.CustomImage
-//        }
-//
-//        mapView.addPOIItem(marker)
 
         // kakao map 관련 리스너 등록록
         mapView.setMapViewEventListener(this)
@@ -298,7 +290,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                 )
                 markerType = MapPOIItem.MarkerType.CustomImage
                 customImageResourceId = R.drawable.ic_marker_location
-                setCustomImageAnchor(0.5f,1.0f)
+                setCustomImageAnchor(0.5f, 1.0f)
                 marker.isShowCalloutBalloonOnTouch = false
             }
 
@@ -312,40 +304,79 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
     // 권한 확인 권한 없을 시 권한 요청
     private fun enableMyLocation(requestPermission: Boolean = false) {
         val context = context ?: return
-        when {
-            ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                    PackageManager.PERMISSION_GRANTED -> {
-                permissinLocation = true
-            }
-            requestPermission -> requestLocationPermission()
-            else -> {
-            }
+        if (REQUIRED_PERMISSIONS.all { permission ->
+                ContextCompat.checkSelfPermission(context, permission) ==
+                        PackageManager.PERMISSION_GRANTED
+            }) {
+//            Snackbar.make(mBinding.root, "권한 승인됨", Snackbar.LENGTH_SHORT)
+//                .show()
+            permissinLocation = true
+        } else {
+            requestPermissionLauncher.launch(REQUIRED_PERMISSIONS) // requestLocationPermission()
         }
     }
 
-    private fun requestLocationPermission() {
-        val context = context ?: return
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) ==
-            PackageManager.PERMISSION_GRANTED
-        ) {
-            return
+    /**
+     * activity:1.2.0 이후의 권한 획득 방법
+     **/
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            permissions.entries.forEach { permission ->
+                when {
+                    permission.value -> {
+                        Snackbar.make(mBinding.root, "권한 승인됨", Snackbar.LENGTH_SHORT)
+                            .show()
+                    }
+                    shouldShowRequestPermissionRationale(permission.key) -> {
+                        Snackbar.make(
+                            mBinding.root,
+                            "앱 기동을 위해서는 권한이 필요합니다.",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                        enableMyLocation(false)
+                    }
+                    else -> {
+                        Snackbar.make(mBinding.root, "Permission denied", Snackbar.LENGTH_SHORT)
+                            .show()
+                        openSettings()
+                    }
+
+                }
+            }
         }
-        // 권한이 필요한 이유를 설명
-        if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-            MyLocationRationaleFragment()
-                .show(childFragmentManager, "my_location_rationale")
-            return
-        }
-        requestPermissions(
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            1
-        )
+
+    private fun openSettings() {
+        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            data = Uri.fromParts("package", requireContext().packageName, null)
+        }.run(::startActivity)
     }
+
+
+//    private fun requestLocationPermission() {
+//        val context = context ?: return
+//        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) ==
+//            PackageManager.PERMISSION_GRANTED
+//        ) {
+//            return
+//        }
+//        // 권한이 필요한 이유를 설명
+//        if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+//            MyLocationRationaleFragment()
+//                .show(childFragmentManager, "my_location_rationale")
+//            return
+//        }
+//        requestPermissions(
+//            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+//            1
+//        )
+//    }
+
 
     class MyLocationRationaleFragment : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return MaterialAlertDialogBuilder(requireContext())
-                .setMessage("ssasa")
+                .setMessage("권한요청")
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     requireParentFragment().requestPermissions(
                         arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -357,4 +388,11 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         }
     }
 
+    companion object {
+        private val REQUIRED_PERMISSIONS = arrayOf(
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+
+    }
 }
