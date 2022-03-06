@@ -26,14 +26,10 @@ GFY는 내 주변에 헬스장을 보여주고 같이 운동을 할 파트너를
   * UI : 앱에서 UI구성요소
     * Layout : 다양한 위젯을 배치합니다.
     * Fragment : 구성 가능한 UI 기본 단위입니다.
-![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
 * Coroutine : 비동기 작업들의 코드를 간소화하고 메모리 릭을 줄이기 위해 사용합니다. 
 * Dagger hilt : 의존성 주입 라이브러리
 * Glide란 : 이미지 로딩 라이브러리
-[1]: https://github.com/square/okio
-[2]: https://github.com/square/leakcanary
-[3]: https://github.com/journeyapps/zxing-android-embedded
-[4]: https://github.com/apache/log4j
+
 🤷‍♀️시작하기
 ------------
 이 프로젝트는 Gradle Build 시스템을 사용합니다. 프로젝트를 빌드하려면 Android Studio에서 "Import Project"를 사용하세요.
