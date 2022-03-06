@@ -27,11 +27,7 @@ GFY는 내 주변에 헬스장을 보여주고 같이 운동을 할 파트너를
     * Layout : 다양한 위젯을 배치합니다.
     * Fragment : 구성 가능한 UI 기본 단위입니다.
 ![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
-* Coroutine : 비동기 작업들의 코드를 간소화하고 메모리 릭을 줄이기 위해 사용합니다.
-* [OKio][1] : 데이터를 보완 java.io하고 java.nio훨씬 쉽게 액세스, 저장 및 처리할 수 있도록 하는 라이브러리입니다.
-* [LeackCanary][2] : 개발자에게 메모리 릭을 줄이는데 도움을 주는 라이브라리입니다.
-* [Zxing Android Embedded][3] : Android용 바코드 스캐닝 라이브라리 입니다.
-* [Log4J][4] : 자바기반 로깅 라이브러리 입니다. 
+* Coroutine : 비동기 작업들의 코드를 간소화하고 메모리 릭을 줄이기 위해 사용합니다. 
 
 [1]: https://github.com/square/okio
 [2]: https://github.com/square/leakcanary
