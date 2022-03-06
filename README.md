@@ -43,11 +43,12 @@ GFY는 내 주변에 헬스장을 보여주고 같이 운동을 할 파트너를
 
 👍스크린샷
 -----------
-![화면1](screenshots/snapShot_01.png "화면1")
-![화면2](screenshots/snapShot_02.png "화면2")
-![화면3](screenshots/snapShot_03.png "화면3")
-![화면4](screenshots/snapShot_04.png "화면4")
-![화면5](screenshots/snapShot_05.png "화면5")
-![화면6](screenshots/snapShot_06.png "화면6")
-![화면7](screenshots/snapShot_07.png "화면7")
+![화면1](screenshots/gymforyou_1.png "화면1")
+![화면2](screenshots/gymforyou_2.png "화면2")
+![화면3](screenshots/gymforyou_3.png "화면3")
+![화면4](screenshots/gymforyou_4.png "화면4")
+![화면5](screenshots/gymforyou_5.png "화면5")
+![화면6](screenshots/gymforyou_6.png "화면6")
+![화면7](screenshots/gymforyou_7.png "화면7")
+![화면8](screenshots/gymforyou_8.png "화면8")
 
