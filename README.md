@@ -28,7 +28,8 @@ GFY는 내 주변에 헬스장을 보여주고 같이 운동을 할 파트너를
     * Fragment : 구성 가능한 UI 기본 단위입니다.
 ![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
 * Coroutine : 비동기 작업들의 코드를 간소화하고 메모리 릭을 줄이기 위해 사용합니다. 
-
+* Dagger hilt : 의존성 주입 라이브러리
+* Glide란 : 이미지 로딩 라이브러리
 [1]: https://github.com/square/okio
 [2]: https://github.com/square/leakcanary
 [3]: https://github.com/journeyapps/zxing-android-embedded
