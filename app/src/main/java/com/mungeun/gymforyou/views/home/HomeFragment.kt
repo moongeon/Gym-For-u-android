@@ -107,15 +107,11 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                         true
                     }
                     R.id.action_my_location -> {
-//                        permissinLocation = !permissinLocation
-
                         if (permissinLocation) {
                             this@HomeFragment.mapView.setMapCenterPoint(currentMapPoint, true)
                         } else {
                             enableMyLocation(true)
                         }
-//                                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading else
-//                                MapView.CurrentLocationTrackingMode.TrackingModeOff
                         true
                     }
                     else -> throw IndexOutOfBoundsException()
@@ -147,8 +143,7 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         mapViewContainer.addView(mapView)
         // 현재위치 이동
         enableMyLocation(true)
-        if (permissinLocation) mapView.currentLocationTrackingMode =
-            MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        onTrackingMode()
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBinding.bottomSheet)
 
@@ -278,6 +273,11 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
         Log.d("", "")
     }
 
+    private fun onTrackingMode(){
+        if (permissinLocation) mapView.currentLocationTrackingMode =
+            MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+    }
+
     private fun showMapViewMarker(gymList: List<Gym>) {
         // 맵뷰 객체 생성
         gymList.forEach {
@@ -326,6 +326,8 @@ class HomeFragment : Fragment(), MapView.MapViewEventListener, MapView.POIItemEv
                     permission.value -> {
                         Snackbar.make(mBinding.root, "권한 승인됨", Snackbar.LENGTH_SHORT)
                             .show()
+                        permissinLocation = true
+                        onTrackingMode()
                     }
                     shouldShowRequestPermissionRationale(permission.key) -> {
                         Snackbar.make(
